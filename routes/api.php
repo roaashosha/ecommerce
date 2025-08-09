@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
@@ -64,3 +65,5 @@ Route::get('/cart/{id}/items',[CartController::class,'cartItems']);
 
 Route::get('/faq',[PageController::class,'faq']);
 Route::get('/about-us',[PageController::class,'aboutUs']);
+
+Route::get('/address/{id}',[AddressController::class,'userAddress']);

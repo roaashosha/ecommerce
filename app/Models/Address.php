@@ -31,5 +31,9 @@ class Address extends Model
         return $this->belongsTo(Zipcode::class);
     }
 
+    public function user(){
+        return $this->belongsto(User::class);
+    }
+
 
 }
