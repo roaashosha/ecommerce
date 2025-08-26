@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
+use App\Models\Favorite;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,11 @@ class ProductController extends Controller
 
      }
 
-
-    
+     public function getProductByCategoryGender(Request $request , $id)
+    {
+        $gender = $request->query('gender','all');
+        $products = Product::filterByCategoryGender($id,$gender)->get();
+        return $this->ApiResponse(ProductResource::collection($products),"Produced are returned successfully!",200);
+    }    
 
 }

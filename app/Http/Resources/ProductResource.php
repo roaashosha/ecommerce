@@ -21,7 +21,8 @@ class ProductResource extends JsonResource
         'offer_price' => $this->offer_price,
         'offer' => $this->offer,
         'category_id' => $this->category_id,
-        'category_name' => $this->category->name ?? null 
+        'category_name' => $this->category->name ?? null,
+        "target_gender"=>$this->target_gender 
     ];
     }
 }

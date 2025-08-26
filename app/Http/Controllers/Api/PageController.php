@@ -15,13 +15,29 @@ class PageController extends Controller
         if (!$page){
             return $this->ApiResponse(null,"page is not found!",404);
         }
-        return $this->ApiResponse(["title"=>$page->title,"contnet"=>$page->content],"Page is found!",200)->header('Content-Type', 'text/html');
+        return $this->ApiResponse(["title"=>$page->title,"content"=>$page->content],"Page is found!",200)->header('Content-Type', 'text/html');
     }
     public function aboutUs(){
         $page = Page::find(1);
         if (!$page){
             return $this->ApiResponse(null,"page is not found!",404);
         }
-        return $this->ApiResponse(["title"=>$page->title,"contnet"=>$page->content],"Page is found!",200)->header('Content-Type', 'text/html');
+        return $this->ApiResponse(["title"=>$page->title,"content"=>$page->content],"Page is found!",200)->header('Content-Type', 'text/html');
+    }
+
+    public function legal(){
+        $page = Page::find(3);
+        if (!$page){
+            return $this->ApiResponse(null,"page is not found!",404);
+        }
+        return $this->ApiResponse(["title"=>$page->title,"content"=>$page->content],"Page is found!",200)->header('Content-Type', 'text/html');
+    }
+
+    public function contacts(){
+        $page = Page::find(4);
+        if (!$page){
+            return $this->ApiResponse(null,"page is not found!",404);
+        }
+        return $this->ApiResponse(["title"=>$page->title,"content"=>$page->content],"Page is found!",200)->header('Content-Type', 'text/html');
     }
 }

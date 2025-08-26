@@ -22,6 +22,10 @@ class Product extends Model
         return $this->hasMany(CartItem::class);
     }
 
+    public function favorites(){
+        return $this->hasMany(Favorite::class);
+    }
+
     public function scopeFilter($query,$filters){
         if (isset($filters['color'])){
             $query->where('color',$filters['color']);
@@ -50,5 +54,18 @@ class Product extends Model
 
         }
     return $query;
+    }
+
+    public function scopeFilterByCategoryGender($query, $categoryId = null, $gender = 'all')
+    {
+        if ($categoryId) {
+            $query->where('category_id', $categoryId);
+        }
+
+        if ($gender && $gender !== 'all') {
+            $query->where('target_gender', $gender);
+        }
+
+        return $query;
     }
 }

@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('addresses',function (Blueprint $table) {
-            $table->foreignId('user_id')->nullable()->constrained();
-        });
-
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('address_id');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->enum('payment_status', ['pending', 'paid', 'failed'])->default('pending');
+            $table->string('transaction_id')->nullable();
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('orders', function (Blueprint $table) {
+            //
+        });
     }
 };
