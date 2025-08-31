@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('address_id')->nullable()->constrained();
             $table->string('email',200)->nullable()->unique();
             $table->string('username',50)->nullable()->unique();
-            $table->string('phone',11);
+            $table->string('phone',11)->nullable();
             $table->date('birth_date')->nullable();
             $table->boolean("theme")->default(0);
             $table->string("lang",2)->default('en');

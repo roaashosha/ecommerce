@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\GoogleController;
 use App\Http\Controllers\api\NotificationController;
 use App\Http\Controllers\api\ReviewController;
 use Illuminate\Http\Request;
@@ -65,6 +66,9 @@ Route::group([
     Route::post('/user/{id}/set-photo',[UserController::class,'setPhoto']);
     Route::post('/user/delete',[UserController::class,'deleteUser']);
     Route::post('/user/update-language',[UserController::class,'setLanguage']);
+//     Route::post('/notification-create', [NotificationController::class, 'create']); 
+//     Route::get('/notifications', [NotificationController::class, 'list']);   
+//     Route::post('/save-device-token',[NotificationController::class,'saveDeviceToken']);
 });
 
 Route::get('/home-products',[ProductController::class,'HomePageProducts']);
@@ -103,6 +107,8 @@ Route::post('/favorites/delete', [FavoriteController::class, 'deleteFavorite']);
 
 Route::post('/notification-create', [NotificationController::class, 'create']); 
 Route::get('/notifications', [NotificationController::class, 'list']);   
+Route::post('/save-device-token',[NotificationController::class,'saveDeviceToken']);
+Route::post('/test-send-notification',[NotificationController::class,'testSendNotification']); 
 
 Route::post('/review-create', [ReviewController::class, 'store']); 
 Route::get('/reviews/{productId}', [ReviewController::class, 'productReviews']);
@@ -118,3 +124,7 @@ Route::put('/rate/{id}/update',[RateController::class,'updateRate']);
 Route::delete('/rate/{id}/delete',[RateController::class,'destroyRate']);
 
 
+
+Route::get('/google', [GoogleController::class, 'redirect']);
+Route::get('/google/callback', [GoogleController::class, 'callback']);
+Route::post('/google/mobile', [GoogleController::class, 'mobileLogin']);
